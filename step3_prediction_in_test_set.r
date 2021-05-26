@@ -217,12 +217,12 @@ umap_cluster=function(OUTPUT_DIRECTORY, MATCOUNTS_TEST, MATCOUNTS_TRAIN, LABELS_
     }
     dfTestGroups = ls(pattern="dfTest_grp")
     #create dataframe where we will monitor up and down direction of expression (updn stands for up and down)
-    df_updn = matrix(NA, ncol=1+length(dfTestGroups), nrow=nbgenes)
-    rownames(df_updn) = newgenes
+    df_updn = matrix(NA, ncol=1+length(dfTestGroups), nrow=length(intersect(rownames(MATCOUNTS_TEST), rownames(MATCOUNTS_TRAIN))))
+    rownames(df_updn) = intersect(rownames(MATCOUNTS_TEST), rownames(MATCOUNTS_TRAIN))
     colnames(df_updn) = c('Train_case', dfTestGroups)
     # create a dataframe where we will monitor the absolute difference in median expression (in case the direction is not sufficient to infer the cluster)
     df_absdiff = df_updn
-    for (gene in rownames(MATCOUNTS_TEST))
+    for (gene in intersect(rownames(MATCOUNTS_TEST), rownames(MATCOUNTS_TRAIN)))
     {
         # in the df_updn dataframe,
         # 1 stands for higher expression
