@@ -102,7 +102,7 @@ RF_LOOCV = function(TRAINING_DIRECTORY, SAMPLES, LABELS, MATCOUNTS, SIGNATURES, 
         imp_features$combined_model = importance(final_RF_model, type=2)[rownames(imp_features),]
 
         write.table(cbind(data.frame(samples = rownames(imp_features)), imp_features),
-                file=paste(COMMONDIR, 'RF_feat_importance_',signatureName, SUFFIX, '.txt', sep=''),
+                file=paste('RF_feat_importance_',signatureName, SUFFIX, '.txt', sep=''),
                 sep='\t', row.names=F, col.names=T, quote=F, eol='\n')
 
         save(final_RF_model, file=paste('RF_combined_model_', signatureName, SUFFIX, '.RData',sep=''))

@@ -11,7 +11,7 @@
 
 extract_ROC_AUC = function(RF_output_score_matrix)
     {
-        RF_output_df = read.table(RF_output_score_matrix, header=T, rownames=1, sep='\t', stringsAsFactor=F)
+        RF_output_df = read.table(RF_output_score_matrix, header=T, row.names=1, sep='\t', stringsAsFactor=F)
         suppressWarnings(suppressMessages(library(AUC, quietly = TRUE)))
         detach("package:AUC")
         suppressWarnings(suppressMessages(library(pROC, quietly = TRUE)))
@@ -45,7 +45,7 @@ extract_ROC_AUC = function(RF_output_score_matrix)
 
 extract_PR_AUC <- function(RF_output_score_matrix)
     {
-        RF_output_df = read.table(RF_output_score_matrix, header=T, rownames=1, sep='\t', stringsAsFactor=F)
+        RF_output_df = read.table(RF_output_score_matrix, header=T, row.names=1, sep='\t', stringsAsFactor=F)
         suppressWarnings(suppressMessages(library(ROCR, quietly = TRUE )))
         suppressWarnings(suppressMessages(library(AUC, quietly = TRUE )))
 
