@@ -53,6 +53,9 @@ extract_PR_AUC <- function(RF_output_score_matrix)
         LABELS = RF_output_df[,1]
         # probs is a vector with the probabilities output per the RF (same order as LABELS
         probs = RF_output_df[,2]
+        idx_nas = which(is.na(probs))
+        probs = probs[-idx_nas]
+        LABELS = LABELS[-idx_nas]
         # pheno is the "category"  phenotype we are interested in; ex: 'case'
         pheno = gsub('\\/.*','', RF_output_score_matrix)
 
