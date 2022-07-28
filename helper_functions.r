@@ -23,7 +23,7 @@ extract_ROC_AUC = function(RF_output_score_matrix)
         # probs is a vector with the probabilities output per the RF (same order as LABELS
         probs = RF_output_df[,2]
         # pheno is the "category"  phenotype we are interested in; ex: 'case'
-        pheno = gsub('\\/.*','', RF_output_df)
+        pheno = gsub('\\/.*','', RF_output_score_matrix)
 
         # rename the labels into binary for LABELS (0 if it is not the correct label and 1 if it is the label of interest)
         binary_label = rep(NA, length(LABELS))
@@ -54,7 +54,7 @@ extract_PR_AUC <- function(RF_output_score_matrix)
         # probs is a vector with the probabilities output per the RF (same order as LABELS
         probs = RF_output_df[,2]
         # pheno is the "category"  phenotype we are interested in; ex: 'case'
-        pheno = gsub('\\/.*','', RF_output_df)
+        pheno = gsub('\\/.*','', RF_output_score_matrix)
 
         # rename the labels into binary for LABELS (0 if it is not the correct label and 1 if it is the label of interest)
         binary_label = rep(NA, length(LABELS))
